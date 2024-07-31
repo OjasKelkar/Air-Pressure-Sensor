@@ -1,0 +1,54 @@
+[ 2024-07-29 14:15:57,503 ] 36 root - INFO - Starting data ingestion
+[ 2024-07-29 14:15:57,646 ] 32 root - INFO - Exporting data from mongodb to feature store
+[ 2024-07-29 14:15:57,647 ] 18 root - INFO - Retrieved MongoDB URL: mongodb+srv://kelkarork0308:jairamjiki@cluster0.7ydepdv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+[ 2024-07-29 14:19:07,540 ] 60 root - INFO - Performed train test split on the dataframe
+[ 2024-07-29 14:19:07,540 ] 62 root - INFO - Exited split_data_as_train_test method of Data_Ingestion class
+[ 2024-07-29 14:19:07,542 ] 70 root - INFO - Exporting train and test file path.
+[ 2024-07-29 14:19:13,067 ] 80 root - INFO - Exported train and test file path.
+[ 2024-07-29 14:19:13,145 ] 42 root - INFO - Data ingestion completed and artifact: DataIngestionArtifact(trained_file_path='artifact\\07_29_2024_14_15_57\\data_ingestion\\ingested\\train.csv', test_file_path='artifact\\07_29_2024_14_15_57\\data_ingestion\\ingested\\test.csv')
+[ 2024-07-29 14:19:14,120 ] 35 root - INFO - Required number of columns: 164
+[ 2024-07-29 14:19:14,120 ] 36 root - INFO - Data frame has columns: 164
+[ 2024-07-29 14:19:14,120 ] 35 root - INFO - Required number of columns: 164
+[ 2024-07-29 14:19:14,120 ] 36 root - INFO - Data frame has columns: 164
+[ 2024-07-29 14:19:14,120 ] 57 root - INFO - Missing numerical columns: [[]]
+[ 2024-07-29 14:19:14,121 ] 57 root - INFO - Missing numerical columns: [[]]
+[ 2024-07-29 14:19:14,345 ] 148 root - INFO - Data validation artifact: DataValidationArtifact(validation_status=False, valid_train_file_path='artifact\\07_29_2024_14_15_57\\data_ingestion\\ingested\\train.csv', valid_test_file_path='artifact\\07_29_2024_14_15_57\\data_ingestion\\ingested\\test.csv', invalid_train_file_path=None, invalid_test_file_path=None, drift_report_file_path='artifact\\07_29_2024_14_15_57\\data_validation\\drift_report\\report.yaml')
+[ 2024-07-29 14:19:31,125 ] 67 root - INFO - Entered the save_object method of MainUtils class
+[ 2024-07-29 14:19:31,131 ] 71 root - INFO - Exited the save_object method of MainUtils class
+[ 2024-07-29 14:19:31,132 ] 137 root - INFO - Data transformation artifact: DataTransformationArtifact(transformed_object_file_path='artifact\\07_29_2024_14_15_57\\data_transformation\\transformed_object\\preprocessing.pkl', transformed_train_file_path='artifact\\07_29_2024_14_15_57\\data_transformation\\transformed\\train.npy', transformed_test_file_path='artifact\\07_29_2024_14_15_57\\data_transformation\\transformed\\test.npy')
+[ 2024-07-29 14:20:01,062 ] 67 root - INFO - Entered the save_object method of MainUtils class
+[ 2024-07-29 14:20:01,073 ] 71 root - INFO - Exited the save_object method of MainUtils class
+[ 2024-07-29 14:20:01,074 ] 90 root - INFO - Model trainer artifact: ModelTrainerArtifact(trained_model_file_path='artifact\\07_29_2024_14_15_57\\model_trainer\\trained_model\\model.pkl', train_metric_artifact=ClassificationMetricArtifact(f1_score=np.float64(0.9999821730992067), precision_score=np.float64(1.0), recall_score=np.float64(0.9999643468339988)), test_metric_artifact=ClassificationMetricArtifact(f1_score=np.float64(0.9862143630458319), precision_score=np.float64(0.9936009307737056), recall_score=np.float64(0.9789368104312939)))
+[ 2024-07-29 14:20:02,156 ] 75 root - INFO - Model evaluation artifact: ModelEvaluationArtifact(is_model_accepted=True, improved_accuracy=None, best_model_path=None, trained_model_path='artifact\\07_29_2024_14_15_57\\model_trainer\\trained_model\\model.pkl', train_model_metric_artifact=ClassificationMetricArtifact(f1_score=np.float64(0.9862143630458319), precision_score=np.float64(0.9936009307737056), recall_score=np.float64(0.9789368104312939)), best_model_metric_artifact=None)
+[ 2024-07-29 14:24:49,422 ] 93 root - ERROR - An error occurred during prediction.
+Traceback (most recent call last):
+  File "D:\Sensor\main.py", line 82, in predict
+    y_pred = model.predict(df)
+             ^^^^^^^^^^^^^^^^^
+  File "D:\Sensor\sensor2\ml\model\estimator.py", line 32, in predict
+    raise e
+  File "D:\Sensor\sensor2\ml\model\estimator.py", line 28, in predict
+    x_transform = self.preprocessor.transform(x)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\OJAS\AppData\Roaming\Python\Python311\site-packages\sklearn\pipeline.py", line 903, in transform
+    Xt = transform.transform(Xt, **routed_params[name].transform)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\OJAS\AppData\Roaming\Python\Python311\site-packages\sklearn\utils\_set_output.py", line 313, in wrapped
+    data_to_wrap = f(self, X, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\OJAS\AppData\Roaming\Python\Python311\site-packages\sklearn\impute\_base.py", line 570, in transform
+    X = self._validate_input(X, in_fit=False)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\OJAS\AppData\Roaming\Python\Python311\site-packages\sklearn\impute\_base.py", line 350, in _validate_input
+    raise ve
+  File "C:\Users\OJAS\AppData\Roaming\Python\Python311\site-packages\sklearn\impute\_base.py", line 332, in _validate_input
+    X = self._validate_data(
+        ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\OJAS\AppData\Roaming\Python\Python311\site-packages\sklearn\base.py", line 608, in _validate_data
+    self._check_feature_names(X, reset=reset)
+  File "C:\Users\OJAS\AppData\Roaming\Python\Python311\site-packages\sklearn\base.py", line 535, in _check_feature_names
+    raise ValueError(message)
+ValueError: The feature names should match those that were passed during fit.
+Feature names unseen at fit time:
+- class
+

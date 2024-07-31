@@ -1,0 +1,43 @@
+[ 2024-07-29 13:30:39,798 ] 36 root - INFO - Starting data ingestion
+[ 2024-07-29 13:30:39,838 ] 32 root - INFO - Exporting data from mongodb to feature store
+[ 2024-07-29 13:30:39,839 ] 18 root - INFO - Retrieved MongoDB URL: mongodb+srv://kelkarork0308:jairamjiki@cluster0.7ydepdv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+[ 2024-07-29 13:33:51,022 ] 60 root - INFO - Performed train test split on the dataframe
+[ 2024-07-29 13:33:51,024 ] 62 root - INFO - Exited split_data_as_train_test method of Data_Ingestion class
+[ 2024-07-29 13:33:51,024 ] 70 root - INFO - Exporting train and test file path.
+[ 2024-07-29 13:33:57,656 ] 80 root - INFO - Exported train and test file path.
+[ 2024-07-29 13:33:57,759 ] 42 root - INFO - Data ingestion completed and artifact: DataIngestionArtifact(trained_file_path='artifact\\07_29_2024_13_30_39\\data_ingestion\\ingested\\train.csv', test_file_path='artifact\\07_29_2024_13_30_39\\data_ingestion\\ingested\\test.csv')
+[ 2024-07-29 13:33:58,925 ] 35 root - INFO - Required number of columns: 164
+[ 2024-07-29 13:33:58,925 ] 36 root - INFO - Data frame has columns: 164
+[ 2024-07-29 13:33:58,925 ] 35 root - INFO - Required number of columns: 164
+[ 2024-07-29 13:33:58,926 ] 36 root - INFO - Data frame has columns: 164
+[ 2024-07-29 13:33:58,926 ] 57 root - INFO - Missing numerical columns: [[]]
+[ 2024-07-29 13:33:58,926 ] 57 root - INFO - Missing numerical columns: [[]]
+[ 2024-07-29 13:33:59,167 ] 148 root - INFO - Data validation artifact: DataValidationArtifact(validation_status=False, valid_train_file_path='artifact\\07_29_2024_13_30_39\\data_ingestion\\ingested\\train.csv', valid_test_file_path='artifact\\07_29_2024_13_30_39\\data_ingestion\\ingested\\test.csv', invalid_train_file_path=None, invalid_test_file_path=None, drift_report_file_path='artifact\\07_29_2024_13_30_39\\data_validation\\drift_report\\report.yaml')
+[ 2024-07-29 13:34:16,381 ] 67 root - INFO - Entered the save_object method of MainUtils class
+[ 2024-07-29 13:34:16,387 ] 71 root - INFO - Exited the save_object method of MainUtils class
+[ 2024-07-29 13:34:16,388 ] 137 root - INFO - Data transformation artifact: DataTransformationArtifact(transformed_object_file_path='artifact\\07_29_2024_13_30_39\\data_transformation\\transformed_object\\preprocessing.pkl', transformed_train_file_path='artifact\\07_29_2024_13_30_39\\data_transformation\\transformed\\train.npy', transformed_test_file_path='artifact\\07_29_2024_13_30_39\\data_transformation\\transformed\\test.npy')
+[ 2024-07-29 13:34:46,948 ] 67 root - INFO - Entered the save_object method of MainUtils class
+[ 2024-07-29 13:34:47,015 ] 71 root - INFO - Exited the save_object method of MainUtils class
+[ 2024-07-29 13:34:47,015 ] 90 root - INFO - Model trainer artifact: ModelTrainerArtifact(trained_model_file_path='artifact\\07_29_2024_13_30_39\\model_trainer\\trained_model\\model.pkl', train_metric_artifact=ClassificationMetricArtifact(f1_score=np.float64(0.9999821699206561), precision_score=np.float64(1.0), recall_score=np.float64(0.9999643404771245)), test_metric_artifact=ClassificationMetricArtifact(f1_score=np.float64(0.9747213520798427), precision_score=np.float64(0.9930236010093514), recall_score=np.float64(0.9570815450643777)))
+[ 2024-07-29 13:34:48,093 ] 75 root - INFO - Model evaluation artifact: ModelEvaluationArtifact(is_model_accepted=True, improved_accuracy=None, best_model_path=None, trained_model_path='artifact\\07_29_2024_13_30_39\\model_trainer\\trained_model\\model.pkl', train_model_metric_artifact=ClassificationMetricArtifact(f1_score=np.float64(0.9747213520798427), precision_score=np.float64(0.9930236010093514), recall_score=np.float64(0.9570815450643777)), best_model_metric_artifact=None)
+[ 2024-07-29 13:35:25,506 ] 102 root - ERROR - An error occurred during prediction.
+Traceback (most recent call last):
+  File "D:\Sensor\main.py", line 68, in predict
+    df = pd.read_csv(r'"C:\Users\OJAS\Documents\trainingset\ok.csv"')  # Fixed path string
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\OJAS\anaconda3\envs\ok\Lib\site-packages\pandas\io\parsers\readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\OJAS\anaconda3\envs\ok\Lib\site-packages\pandas\io\parsers\readers.py", line 620, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\OJAS\anaconda3\envs\ok\Lib\site-packages\pandas\io\parsers\readers.py", line 1620, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\OJAS\anaconda3\envs\ok\Lib\site-packages\pandas\io\parsers\readers.py", line 1880, in _make_engine
+    self.handles = get_handle(
+                   ^^^^^^^^^^^
+  File "C:\Users\OJAS\anaconda3\envs\ok\Lib\site-packages\pandas\io\common.py", line 873, in get_handle
+    handle = open(
+             ^^^^^
+OSError: [Errno 22] Invalid argument: '"C:\\Users\\OJAS\\Documents\\trainingset\\ok.csv"'
