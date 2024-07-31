@@ -1,0 +1,13 @@
+pymongo[srv]==4.2.0
+scikit-learn
+seaborn
+xgboost
+catboost
+python-dotenv
+PyYAML
+dill
+scipy
+imblearn==0.0
+xgboost==1.6.2
+fastapi
+-e .
